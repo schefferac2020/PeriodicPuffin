@@ -60,7 +60,7 @@ public class GlideController : MonoBehaviour
     }
 
     private bool IsGliding() {
-        return !IsGrounded() && glide_val > 0.0f && Input.GetKey(KeyCode.Space);
+        return !IsGrounded() && glide_val > 0.0f && Input.GetKey(KeyCode.UpArrow);
     }
 
     private bool IsGrounded()
