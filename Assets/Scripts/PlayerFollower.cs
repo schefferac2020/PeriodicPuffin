@@ -22,6 +22,10 @@ public class PlayerFollower : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (player == null) {
+            return;
+        }
+
         Vector2 follow = player.transform.position;
         float xDifference = Vector2.Distance(Vector2.right * transform.position.x, Vector2.right * follow.x);
         float yDifference = Vector2.Distance(Vector2.up * transform.position.y, Vector2.up * follow.y);

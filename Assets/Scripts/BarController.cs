@@ -12,7 +12,6 @@ public class BarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("hell");
         slider = GetComponent<Slider>();
 
         fill_image.color = gradient.Evaluate(1f);
@@ -29,5 +28,6 @@ public class BarController : MonoBehaviour
 
     public void UpdateBarValue(float value) {
         slider.value = value;
+        fill_image.color = gradient.Evaluate(slider.normalizedValue);
     }
 }

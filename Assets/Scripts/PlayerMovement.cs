@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float jump_speed = 7.0f;
     public float running_speed = 7.0f;
+
+
     private Rigidbody2D rb;
     private BoxCollider2D coll;
 
@@ -18,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     Subscription<PlayerDidJump> did_jump_subscription;
 
     private SpriteRenderer sprite_renderer;
+
+    private bool movement_disabled = false;
 
     void Start()
     {
@@ -33,6 +37,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float dirX = Input.GetAxisRaw("Horizontal");
+
+
+        if (movement_disabled) {
+            dirX = 0.0f;
+        }
+
         rb.velocity = new Vector2(running_speed * dirX, rb.velocity.y);
 
 
@@ -69,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 anim_state = MovementState.gliding;
                 sprite_renderer.flipX = true;
             }
+            
 
             ////Set speed to zero if they are not holding the button
             //if (Input.GetKeyDown(KeyCode.Space))
@@ -93,5 +104,14 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded() {
         LayerMask ground_layer = LayerMask.GetMask("Ground");
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, 0.1f, ground_layer);
+    }
+
+    public void DisablePlayerMovement() {
+        movement_disabled = true;
+    }
+
+    public void EnablePlayerMovement()
+    {
+        movement_disabled = false;
     }
 }

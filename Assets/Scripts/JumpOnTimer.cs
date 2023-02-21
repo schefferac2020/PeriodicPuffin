@@ -30,7 +30,11 @@ public class JumpOnTimer : MonoBehaviour
         }
     }
 
-    void Jump() {
+    public void DisableTimerJump() {
+        time_to_wait = 10000000;
+    }
+
+    public void Jump() {
         rb.velocity = jumping_speed * Vector3.up;
         EventBus.Publish<PlayerDidJump>(new PlayerDidJump());
     }

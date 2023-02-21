@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
 
 
     void _OnTimerUpdateRecieved(TimerUpdatedEvent e) {
-        flap_counter.text = "Flap Timer: " + e.new_timer_val.ToString();
+        flap_counter.text = "FLAP COUNTDOWN: " + e.new_timer_val.ToString();
     }
 
     private void OnDestroy()

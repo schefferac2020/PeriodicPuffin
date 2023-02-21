@@ -73,3 +73,5 @@ crashlytics-build.properties
 
 # My Additions
 *.vsconfig
+PuffinWindowsBuild/
+PuffinsMac
